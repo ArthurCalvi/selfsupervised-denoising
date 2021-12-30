@@ -139,7 +139,7 @@ class DenoiserTrainer:
         logger.info("Loaded Training Dataset.")
         if self.cfg[ConfigValue.TEST_DATA_PATH]:
             logger.info("Loading Validation Dataset...")
-            self.testloader, self.testset, self.test_sampler = self.test_dataself.test_data()
+            self.testloader, self.testset, self.test_sampler = self.test_data() #corrected Arthur CALVI
             logger.info("Loaded Validation Dataset.")
 
         logger.info(ssdn.utils.separator())

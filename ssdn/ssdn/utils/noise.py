@@ -109,6 +109,23 @@ def add_poisson(
     return tensor, lam
 
 
+def add_nothing(
+    tensor: Tensor,
+    std_dev: Union[Number, Tuple[Number, Number]], ###
+    mean: Number = 0, ###
+    inplace: bool = False,
+    clip: bool = True,
+) -> Tuple[Tensor, Union[Number, Tensor]]:
+
+    if not inplace:
+        tensor = tensor.clone()
+
+    if clip:
+        tensor = ssdn.utils.clip_img(tensor, inplace=True)
+
+    return tensor, 0
+
+
 def add_style(
     images: Tensor, style: str, inplace: bool = False
 ) -> Tuple[Tensor, Union[Number, Tensor]]:
@@ -149,5 +166,7 @@ def add_style(
         return add_gaussian(images, params, inplace=inplace, clip=clip)
     elif noise_type == "poisson":
         return add_poisson(images, params, inplace=inplace, clip=clip)
+    elif noise_type == "real":
+        return add_nothing(images, params, inplace=inplace, clip=clip)
     else:
         raise NotImplementedError("Noise type not supported")

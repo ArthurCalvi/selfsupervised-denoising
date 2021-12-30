@@ -1,0 +1,9 @@
+overrides==6.1.0
+ssdn==1.0
+numpy==1.19.2
+pillow==8.2.0
+tqdm==4.59.0
+h5py==2.10.0
+imagesize==1.2.0
+colorlog==6.6.0
+setuptools==52.0.0
